@@ -47,27 +47,29 @@ public class RecSysServer {
         URI webRootUri = URI.create(webRootLocation.toURI().toASCIIString().replaceFirst("/index.html$","/"));
         System.out.printf("Web Root URI: %s%n", webRootUri.getPath());
 
-        //load all the data to DataManager
-        DataManager.getInstance().loadData(webRootUri.getPath() + "sampledata/movies.csv",
-                webRootUri.getPath() + "sampledata/links.csv",webRootUri.getPath() + "sampledata/ratings.csv",
+        //load all the data to DataManager 加载数据文件
+        DataManager.getInstance().loadData(
+                webRootUri.getPath() + "sampledata/movies.csv",
+                webRootUri.getPath() + "sampledata/links.csv",
+                webRootUri.getPath() + "sampledata/ratings.csv",
                 webRootUri.getPath() + "modeldata/item2vecEmb.csv",
                 webRootUri.getPath() + "modeldata/userEmb.csv",
                 "i2vEmb", "uEmb");
 
-        //create server context
+        //create server context 创建服务上下文
         ServletContextHandler context = new ServletContextHandler();
         context.setContextPath("/");
         context.setBaseResource(Resource.newResource(webRootUri));
         context.setWelcomeFiles(new String[] { "index.html" });
         context.getMimeTypes().addMimeMapping("txt","text/plain;charset=utf-8");
 
-        //bind services with different servlets
+        //bind services with different servlets 将handles绑定到服务上
         context.addServlet(DefaultServlet.class,"/");
-        context.addServlet(new ServletHolder(new MovieService()), "/getmovie");
-        context.addServlet(new ServletHolder(new UserService()), "/getuser");
-        context.addServlet(new ServletHolder(new SimilarMovieService()), "/getsimilarmovie");
-        context.addServlet(new ServletHolder(new RecommendationService()), "/getrecommendation");
-        context.addServlet(new ServletHolder(new RecForYouService()), "/getrecforyou");
+        context.addServlet(new ServletHolder(new MovieService()), "/getmovie");// 电影详情
+        context.addServlet(new ServletHolder(new UserService()), "/getuser");// 物品详情
+        context.addServlet(new ServletHolder(new SimilarMovieService()), "/getsimilarmovie");// 相似电影
+        context.addServlet(new ServletHolder(new RecommendationService()), "/getrecommendation"); //
+        context.addServlet(new ServletHolder(new RecForYouService()), "/getrecforyou"); //
 
         //set url handler
         server.setHandler(context);

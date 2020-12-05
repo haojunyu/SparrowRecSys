@@ -1,6 +1,6 @@
 
 
- function appendMovie2Row(rowId, movieName, movieId, year, rating, rateNumber, genres, baseUrl) {
+function appendMovie2Row(rowId, movieName, movieId, year, rating, rateNumber, genres, baseUrl) {
 
     var genresStr = "";
     $.each(genres, function(i, genre){
@@ -64,7 +64,7 @@
     $('#'+rowId).append(divstr);
 };
 
-
+// 添加行模板
 function addRowFrame(pageId, rowName, rowId, baseUrl) {
  var divstr = '<div class="frontpage-section-top"> \
                 <div class="explore-header frontpage-section-header">\
@@ -97,6 +97,7 @@ function addRowFrameWithoutLink(pageId, rowName, rowId, baseUrl) {
      $(pageId).prepend(divstr);
 };
 
+// 添加一行电影类型（模板+数据）
 function addGenreRow(pageId, rowName, rowId, size, baseUrl) {
     addRowFrame(pageId, rowName, rowId, baseUrl);
     $.getJSON(baseUrl + "getrecommendation?genre="+rowName+"&size="+size+"&sortby=rating", function(result){

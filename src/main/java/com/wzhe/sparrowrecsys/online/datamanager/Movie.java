@@ -12,24 +12,24 @@ import java.util.List;
  * Movie Class, contains attributes loaded from movielens movies.csv and other advanced data like averageRating, emb, etc.
  */
 public class Movie {
-    int movieId;
-    String title;
-    int releaseYear;
-    String imdbId;
-    String tmdbId;
-    List<String> genres;
+    int movieId;    // 电影id
+    String title;   // 电影名称
+    int releaseYear;    // 发行年份
+    String imdbId;  // imdb的id
+    String tmdbId;  // tmdb的id
+    List<String> genres;    // 电影类型，多个
     //how many user rate the movie
-    int ratingNumber;
+    int ratingNumber;   // 电影评分人数
     //average rating score
-    double averageRating;
+    double averageRating;   // 电影评分
 
-    //embedding of the movie
+    //embedding of the movie 该字段Json序列化时会忽略
     @JsonIgnore
-    Embedding emb;
+    Embedding emb;  // 电影embeding
 
-    //all rating scores list
+    //all rating scores list 该字段Json序列化时会忽略
     @JsonIgnore
-    List<Rating> ratings;
+    List<Rating> ratings;  // 电影所有评分
 
     final int TOP_RATING_SIZE = 10;
 
@@ -92,6 +92,7 @@ public class Movie {
         addTopRating(rating);
     }
 
+    // TODO：使用堆是不是效率更高？？
     public void addTopRating(Rating rating){
         if (this.topRatings.isEmpty()){
             this.topRatings.add(rating);

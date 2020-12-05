@@ -13,11 +13,11 @@ import java.util.*;
  */
 
 public class DataManager {
-    //singleton instance
+    //singleton instance 单例模式
     private static volatile DataManager instance;
     HashMap<Integer, Movie> movieMap;
     HashMap<Integer, User> userMap;
-    //genre reverse index for quick querying all movies in a genre
+    //genre reverse index for quick querying all movies in a genre 电影和类型的倒排索引
     HashMap<String, List<Movie>> genreReverseIndexMap;
 
     private DataManager(){
@@ -39,6 +39,7 @@ public class DataManager {
     }
 
     //load data from file system including movie, rating, link data and model data like embedding vectors.
+    // 加载物品movie，评分rating，详情link，模型数据（电影和用户向量）
     public void loadData(String movieDataPath, String linkDataPath, String ratingDataPath, String movieEmbPath, String userEmbPath, String movieRedisKey, String userRedisKey) throws Exception{
         loadMovieData(movieDataPath);
         loadLinkData(linkDataPath);
