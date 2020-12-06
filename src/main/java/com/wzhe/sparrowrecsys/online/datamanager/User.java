@@ -11,16 +11,16 @@ import java.util.List;
  * User class, contains attributes loaded from movielens ratings.csv
  */
 public class User {
-    int userId;
-    double averageRating = 0;
-    double highestRating = 0;
-    double lowestRating = 5.0;
-    int ratingCount = 0;
+    int userId;     // 用户id
+    double averageRating = 0;   // 用户平均评分
+    double highestRating = 0;   // 用户最高评分
+    double lowestRating = 5.0;  // 用户最低评分
+    int ratingCount = 0;    // 评分次数
 
     @JsonSerialize(using = RatingListSerializer.class)
     List<Rating> ratings;
 
-    //embedding of the movie
+    //embedding of the movie 该字段Json序列化时会忽略
     @JsonIgnore
     Embedding emb;
 
@@ -45,6 +45,7 @@ public class User {
         this.ratings = ratings;
     }
 
+    // 这里不适用堆PriorityQueue，因为不需要取topK
     public void addRating(Rating rating) {
         this.ratings.add(rating);
         this.averageRating = (this.averageRating * ratingCount + rating.getScore()) / (ratingCount + 1);

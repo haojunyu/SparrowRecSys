@@ -92,7 +92,7 @@ public class Movie {
         addTopRating(rating);
     }
 
-    // TODO：使用堆是不是效率更高？？
+    // TODO：使用堆是不是效率更高？？ PriorityQueue
     public void addTopRating(Rating rating){
         if (this.topRatings.isEmpty()){
             this.topRatings.add(rating);

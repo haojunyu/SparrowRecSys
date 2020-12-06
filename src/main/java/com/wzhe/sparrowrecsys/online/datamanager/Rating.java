@@ -4,10 +4,10 @@ package com.wzhe.sparrowrecsys.online.datamanager;
  * Rating Class, contains attributes loaded from movielens ratings.csv
  */
 public class Rating {
-    int movieId;
-    int userId;
-    float score;
-    long timestamp;
+    int movieId;    // 电影id
+    int userId;     // 用户id
+    float score;    // 评分
+    long timestamp; // 评分时间
 
     public int getMovieId() {
         return movieId;

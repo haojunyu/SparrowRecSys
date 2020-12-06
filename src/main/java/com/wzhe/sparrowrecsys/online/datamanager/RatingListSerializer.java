@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import java.io.IOException;
 import java.util.List;
 
+// 将toprating序列化为json字符串
 public class RatingListSerializer extends JsonSerializer<List<Rating>> {
 
     @Override
