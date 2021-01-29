@@ -11,6 +11,8 @@ import java.util.List;
 
 /**
  * SimilarMovieService, recommend similar movies given by a specific movie
+ * 相似电影服务
+ * http://localhost:6010/getsimilarmovie?movieId=924&size=16&model=emb
  */
 public class SimilarMovieService extends HttpServlet {
     protected void doGet(HttpServletRequest request,
@@ -21,11 +23,11 @@ public class SimilarMovieService extends HttpServlet {
             response.setCharacterEncoding("UTF-8");
             response.setHeader("Access-Control-Allow-Origin", "*");
 
-            //movieId
+            //movieId 电影id
             String movieId = request.getParameter("movieId");
-            //number of returned movies
+            //number of returned movies 返回电影数目
             String size = request.getParameter("size");
-            //model of calculating similarity, e.g. embedding, graph-embedding
+            //model of calculating similarity, e.g. embedding, graph-embedding 相似度模型
             String model = request.getParameter("model");
 
             //use SimilarMovieFlow to get similar movies

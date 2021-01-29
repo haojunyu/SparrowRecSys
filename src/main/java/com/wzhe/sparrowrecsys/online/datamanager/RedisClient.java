@@ -3,7 +3,7 @@ package com.wzhe.sparrowrecsys.online.datamanager;
 import redis.clients.jedis.Jedis;
 
 public class RedisClient {
-    //singleton Jedis
+    //singleton Jedis 单例
     private static volatile Jedis redisClient;
     final static String REDIS_END_POINT = "localhost";
     final static int REDIS_PORT = 6379;

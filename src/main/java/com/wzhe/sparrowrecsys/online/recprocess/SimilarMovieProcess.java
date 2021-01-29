@@ -11,10 +11,10 @@ import java.util.*;
 public class SimilarMovieProcess {
 
     /**
-     * get recommendation movie list
-     * @param movieId input movie id
-     * @param size  size of similar items
-     * @param model model used for calculating similarity
+     * get recommendation movie list 获得相似电影列表
+     * @param movieId input movie id 电影id
+     * @param size  size of similar items 相似的电影个数
+     * @param model model used for calculating similarity 相似度的计算
      * @return  list of similar movies
      */
     public static List<Movie> getRecList(int movieId, int size, String model){
@@ -32,9 +32,9 @@ public class SimilarMovieProcess {
     }
 
     /**
-     * generate candidates for similar movies recommendation
-     * @param movie input movie object
-     * @return  movie candidates
+     * generate candidates for similar movies recommendation 通过电影类型获取相似电影候选集（每个类型取100个）
+     * @param movie input movie object 电影对象
+     * @return  movie candidates 电影对象的候选集
      */
     public static List<Movie> candidateGenerator(Movie movie){
         HashMap<Integer, Movie> candidateMap = new HashMap<>();
@@ -112,10 +112,10 @@ public class SimilarMovieProcess {
     }
 
     /**
-     * rank candidates
-     * @param movie    input movie
-     * @param candidates    movie candidates
-     * @param model     model name used for ranking
+     * rank candidates 对电影候选集排序
+     * @param movie    input movie 当前电影
+     * @param candidates    movie candidates 电影候选集
+     * @param model     model name used for ranking 模型排序
      * @return  ranked movie list
      */
     public static List<Movie> ranker(Movie movie, List<Movie> candidates, String model){
@@ -137,7 +137,7 @@ public class SimilarMovieProcess {
     }
 
     /**
-     * function to calculate similarity score
+     * function to calculate similarity score 计算相似度
      * @param movie     input movie
      * @param candidate candidate movie
      * @return  similarity score

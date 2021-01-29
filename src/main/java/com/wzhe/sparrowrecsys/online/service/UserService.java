@@ -10,6 +10,8 @@ import java.io.IOException;
 
 /**
  * UserService, return information of a specific user
+ * 用户信息服务
+ * http://localhost:6010/getuser?id=1
  */
 
 public class UserService extends HttpServlet {
@@ -21,13 +23,13 @@ public class UserService extends HttpServlet {
             response.setCharacterEncoding("UTF-8");
             response.setHeader("Access-Control-Allow-Origin", "*");
 
-            //get user id via url parameter
+            //get user id via url parameter 获取用户 id 参数
             String userId = request.getParameter("id");
 
-            //get user object from DataManager
+            //get user object from DataManager 获取用户详细信息
             User user = DataManager.getInstance().getUserById(Integer.parseInt(userId));
 
-            //convert movie object to json format and return
+            //convert movie object to json format and return 用户json格式数据
             if (null != user) {
                 ObjectMapper mapper = new ObjectMapper();
                 String jsonUser = mapper.writeValueAsString(user);

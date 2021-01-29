@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * RecForYouService, provide recommended for you service
+ * 个性化推荐
  */
 
 public class RecForYouService extends HttpServlet {
@@ -27,14 +28,14 @@ public class RecForYouService extends HttpServlet {
             response.setCharacterEncoding("UTF-8");
             response.setHeader("Access-Control-Allow-Origin", "*");
 
-            //get user id via url parameter
+            //get user id via url parameter 用户id
             String userId = request.getParameter("id");
-            //number of returned movies
+            //number of returned movies 推荐电影个数
             String size = request.getParameter("size");
-            //ranking algorithm
+            //ranking algorithm 排序算法
             String model = request.getParameter("model");
 
-            //a simple method, just fetch all the movie in the genre
+            //a simple method, just fetch all the movie in the genre 个性化推荐结果
             List<Movie> movies = RecForYouProcess.getRecList(Integer.parseInt(userId), Integer.parseInt(size), model);
 
             //convert movie list to json format and return

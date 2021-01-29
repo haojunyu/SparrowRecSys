@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Embedding Class, contains embedding vector and related calculation
+ * 词嵌入类，包括词向量以及相关度计算
  */
 public class Embedding {
     //embedding vector
@@ -29,7 +30,7 @@ public class Embedding {
         this.embVector = embVector;
     }
 
-    //calculate cosine similarity between two embeddings
+    //calculate cosine similarity between two embeddings 计算两个词嵌入的相似度
     public double calculateSimilarity(Embedding otherEmb){
         if (null == embVector || null == otherEmb || null == otherEmb.getEmbVector()
                 || embVector.size() != otherEmb.getEmbVector().size()){

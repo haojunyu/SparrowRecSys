@@ -68,7 +68,7 @@ public class RecSysServer {
         context.addServlet(new ServletHolder(new MovieService()), "/getmovie");// 电影详情
         context.addServlet(new ServletHolder(new UserService()), "/getuser");// 物品详情
         context.addServlet(new ServletHolder(new SimilarMovieService()), "/getsimilarmovie");// 相似电影
-        context.addServlet(new ServletHolder(new RecommendationService()), "/getrecommendation"); //
+        context.addServlet(new ServletHolder(new RecommendationService()), "/getrecommendation"); // 首页电影推荐
         context.addServlet(new ServletHolder(new RecForYouService()), "/getrecforyou"); //
 
         //set url handler

@@ -11,15 +11,16 @@ import java.util.*;
 
 /**
  * Recommendation process of similar movies
+ * 个性化推荐
  */
 
 public class RecForYouProcess {
 
     /**
      * get recommendation movie list
-     * @param userId input user id
-     * @param size  size of similar items
-     * @param model model used for calculating similarity
+     * @param userId input user id 用户id
+     * @param size  size of similar items 返回电影候选集
+     * @param model model used for calculating similarity 模型
      * @return  list of similar movies
      */
     public static List<Movie> getRecList(int userId, int size, String model){
@@ -30,7 +31,7 @@ public class RecForYouProcess {
         final int CANDIDATE_SIZE = 800;
         List<Movie> candidates = DataManager.getInstance().getMovies(CANDIDATE_SIZE, "rating");
 
-        //load user emb from redis if data source is redis
+        //load user emb from redis if data source is redis 如果数据来自redis则加载用户的词嵌入
         if (Config.EMB_DATA_SOURCE.equals(Config.DATA_SOURCE_REDIS)){
             String userEmbKey = "uEmb:" + userId;
             String userEmb = RedisClient.getInstance().get(userEmbKey);
@@ -49,9 +50,9 @@ public class RecForYouProcess {
 
     /**
      * rank candidates
-     * @param user    input user
-     * @param candidates    movie candidates
-     * @param model     model name used for ranking
+     * @param user    input user 用户
+     * @param candidates    movie candidates 电影候选集
+     * @param model     model name used for ranking 排序方法
      * @return  ranked movie list
      */
     public static List<Movie> ranker(User user, List<Movie> candidates, String model){
